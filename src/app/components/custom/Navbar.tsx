@@ -29,7 +29,7 @@ export default function Navbar() {
           {[
             { name: "Home", href: "/", img: "/imgs/home.png" },
             { name: "About Us", href: "/about", img: "/imgs/about.png" },
-            { name: "Expertise", href: "/expertise", img: "/imgs/services.png" },
+            { name: "Services", href: "/expertise", img: "/imgs/services.png" },
             { name: "Contact", href: "/contact", img: "/imgs/contact.png" },
             { name: "Random", href: "/random", img: "/imgs/random.png" },
           ].map((link) => (
@@ -76,7 +76,7 @@ export default function Navbar() {
           {[
             { name: "Home", href: "/" },
             { name: "About Us", href: "/about" },
-            { name: "Expertise", href: "/expertise" },
+            { name: "Services", href: "/expertise" },
             { name: "Contact", href: "/contact" },
             { name: "Random", href: "/random" },
           ].map((link) => (
