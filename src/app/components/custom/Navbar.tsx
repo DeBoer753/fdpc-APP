@@ -4,6 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi"; // Import icons
 
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: "500",
+});
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +20,9 @@ export default function Navbar() {
       <header className="bg-stone-400 text-white p-6">
         <div className="container mx-auto flex justify-between items-center md:flex-col">
           {/* Left-aligned title on mobile, centered on desktop */}
-          <h1 className="text-3xl font-bold italic md:text-center md:w-full">Framing Dragon</h1>
+          <h1 className={`${playfair.className} text-3xl italic md:text-center md:w-full`}>
+          THE FRAMING DRAGON
+          </h1>
 
           {/* Right-aligned hamburger menu (mobile only) */}
           <button
@@ -36,7 +45,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group"
+              className={`${playfair.className} relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group`}
             >
               <span className="relative z-10">{link.name}</span>
               
