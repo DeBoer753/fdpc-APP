@@ -15,10 +15,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="w-full min-h-screen bg-stone-300 flex flex-col">
         <Navbar />
-        <main>{children}</main>
-        <Footer/>
+        <main className="flex-1">{children}</main> {/* Ensures content fills remaining space */}
+        <Footer />
       </body>
     </html>
   );
 }
+
 
