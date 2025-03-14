@@ -1,5 +1,6 @@
 // COMPONENTS
-import Navbar from "../app/components/custom/Navbar";
+import Navbar from "./components/custom/navbar"
+import Footer from "./components/custom/footer";
 
 import type { Metadata } from "next";
 import "./globals.css";
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="w-full min-h-screen bg-stone-300 flex flex-col">
         <Navbar />
         <main>{children}</main>
+        <Footer/>
       </body>
     </html>
   );

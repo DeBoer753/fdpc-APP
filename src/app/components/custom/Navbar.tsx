@@ -37,7 +37,7 @@ export default function Navbar() {
         <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
           {[
             { name: "Home", href: "/", img: "/imgs/home.png" },
-            { name: "About Us", href: "/about", img: "/imgs/about.png" },
+            { name: "About", href: "/about", img: "/imgs/about.png" },
             { name: "Services", href: "/expertise", img: "/imgs/services.png" },
             { name: "Contact", href: "/contact", img: "/imgs/contact.png" },
             { name: "Random", href: "/random", img: "/imgs/random.png" },

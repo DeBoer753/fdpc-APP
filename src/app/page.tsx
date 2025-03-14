@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image"; // Import Next.js Image component
+import { FaStar } from "react-icons/fa";
 
 export default function Home() {
   const reviews = [
@@ -11,47 +12,68 @@ export default function Home() {
     '"Outstanding experience framing a special print. Raphael was helpful, knowledgeable, considerate of our timing needs, and friendly. Importantly, he did a superb framing job, knows his craft, and was a pleasure to work with. Highly recommend!"',
   ];
 
+  const bannerImages = [
+    "/imgs/home-banner-1.png",
+    "/imgs/home-banner-2.png",
+    "/imgs/home-banner-3.png",
+  ];
+
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true); // Controls fade-in and fade-out
   const [scrolled, setScrolled] = useState(false); // Track scroll position
+  const [bannerIndex, setBannerIndex] = useState(0); // Track current banner image
 
-  // Detect Scroll Position
+  // Detect Scroll Position for Banner Zoom Effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 140); // If user scrolls past 100px, apply zoom-out
+      setScrolled(window.scrollY > 140); // If user scrolls past 140px, apply zoom-out
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
-  // Review Fading Effect
+  // **Smooth Crossfade Effect for Banner**
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false); // Start fade-out effect
+    const bannerInterval = setInterval(() => {
+      setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length); // Loop through images
+    }, 6000); // Change banner every 5 seconds
 
-      setTimeout(() => {
-        setIndex((prevIndex) => (prevIndex + 1) % reviews.length); // Change review
-        setFade(true); // Start fade-in effect
-      }, 500); // Delay review change until fade-out completes
-    }, 9000); // Change review every 9 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(bannerInterval); // Cleanup on unmount
   }, []);
+
+  // Auto-Fading Review Effect
+useEffect(() => {
+  const interval = setInterval(() => {
+    setFade(false); // Start fade-out effect
+
+    setTimeout(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % reviews.length); // Change review
+      setFade(true); // Start fade-in effect
+    }, 500); // Wait for fade-out before changing review
+  }, 9000); // Change review every 9 seconds
+
+  return () => clearInterval(interval); // Cleanup on unmount
+}, []);
+
 
   return (
     <div className="flex flex-col items-center">
-      {/* Banner Section */}
+
+      {/* Banner Section (Auto-Changing with Smooth Crossfade) */}
       <div className="relative w-full h-[400px] sm:h-[490px] bg-black overflow-hidden">
-        {/* Background Image with Scroll-Based Zoom Effect */}
-        <div
-          className={`absolute inset-0 bg-cover bg-center transition-transform duration-500 ${
-            scrolled ? "scale-100" : "scale-105"
-          }`}
-          style={{
-            backgroundImage: "url('/imgs/home-banner.png')",
-          }}
-        />
+        {/* Loop through images and set opacity */}
+        {bannerImages.map((image, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-2500 ease-in-out ${
+              i === bannerIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              backgroundImage: `url('${image}')`,
+            }}
+          />
+        ))}
       </div>
 
       {/* Logo Section */}
@@ -68,22 +90,22 @@ export default function Home() {
       {/* Reviews Section */}
       <div className="flex flex-col gap-5 items-center min-h-[200px] max-w-[1200px] justify-center">
         {/* Auto-Fading Review Text */}
-        <h1 className={`text-lg sm:text-xl md:text-2xl lg:text-4xl text-white text-center italic font-thin mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
+        <h1 className={`text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500 text-center italic font-thin mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
           {reviews[index]}
         </h1>
-
-
       </div>
 
-      {/* White Divider (Always Below Reviews & Shrinks Responsively) */}
-      {/* <div className="h-[1px] bg-white mt-5 w-[50%] sm:w-[30%] xs:w-[50%]"></div> */}
+      {/* White Stars (Replacing Divider) */}
+      <div className="flex justify-center gap-2 mt-5">
+        {Array(5).fill(null).map((_, i) => (
+          <FaStar key={i} className="text-white text-lg sm:text-xl md:text-2xl" />
+        ))}
+      </div>
 
-
-      <div className="mt-20 flex justify-center relative">
+      {/* Frame Image */}
+      <div className="mt-20 mb-20 flex justify-center relative">
         {/* Shadow Behind the Image */}
         <div className="absolute w-[360px] h-[400px] bg-black opacity-30 blur-lg rounded-lg translate-y-10"></div>
-
-        {/* Image */}
         <Image
           src="/imgs/home-frame-store.png" // Ensure the image is inside the public folder
           alt="Company Logo"
