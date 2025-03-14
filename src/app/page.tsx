@@ -66,7 +66,7 @@ export default function Home() {
       </div>
 
       {/* Reviews Section */}
-      <div className="flex flex-col gap-5 items-center min-h-[200px] max-w-[1200px]">
+      <div className="flex flex-col gap-5 items-center min-h-[200px] max-w-[1200px] justify-center">
         {/* Auto-Fading Review Text */}
         <h1 className={`text-lg sm:text-xl md:text-2xl lg:text-4xl text-white text-center italic font-thin mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
           {reviews[index]}
@@ -76,11 +76,21 @@ export default function Home() {
       </div>
 
       {/* White Divider (Always Below Reviews & Shrinks Responsively) */}
-      <div className="h-[1px] bg-white mt-5 w-[50%] sm:w-[30%] xs:w-[50%]"></div>
+      {/* <div className="h-[1px] bg-white mt-5 w-[50%] sm:w-[30%] xs:w-[50%]"></div> */}
 
 
-      <div>
-        <h1>new field (image?)</h1>
+      <div className="mt-20 flex justify-center relative">
+        {/* Shadow Behind the Image */}
+        <div className="absolute w-[360px] h-[400px] bg-black opacity-30 blur-lg rounded-lg translate-y-10"></div>
+
+        {/* Image */}
+        <Image
+          src="/imgs/home-frame-store.png" // Ensure the image is inside the public folder
+          alt="Company Logo"
+          width={350} // Adjust dimensions as needed
+          height={150}
+          className="object-contain relative shadow-lg rounded-lg"
+        />
       </div>
 
     </div>
