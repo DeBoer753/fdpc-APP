@@ -45,9 +45,9 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={` font-thin relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group`}
+              className={`font-thin relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group`}
             >
-              <span className="relative z-10">{link.name}</span>
+              <span className="relative z-10 cursor-pointer">{link.name}</span>
               
               {/* Background Image on Hover (Desktop Only) */}
               <span

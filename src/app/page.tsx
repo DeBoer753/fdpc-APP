@@ -22,6 +22,7 @@ export default function Home() {
   const [fade, setFade] = useState(true); // Controls fade-in and fade-out
   const [scrolled, setScrolled] = useState(false); // Track scroll position
   const [bannerIndex, setBannerIndex] = useState(0); // Track current banner image
+  const [scaleFactor, setScaleFactor] = useState(1); // Default to no scaling
 
   // Detect Scroll Position for Banner Zoom Effect
   useEffect(() => {
@@ -33,29 +34,56 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
-  // **Smooth Crossfade Effect for Banner**
+  // Smooth Crossfade Effect for Banner
   useEffect(() => {
     const bannerInterval = setInterval(() => {
       setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length); // Loop through images
-    }, 6000); // Change banner every 5 seconds
+    }, 6000); // Change banner every 6 seconds
 
     return () => clearInterval(bannerInterval); // Cleanup on unmount
   }, []);
 
   // Auto-Fading Review Effect
-useEffect(() => {
-  const interval = setInterval(() => {
-    setFade(false); // Start fade-out effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); // Start fade-out effect
 
-    setTimeout(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % reviews.length); // Change review
-      setFade(true); // Start fade-in effect
-    }, 500); // Wait for fade-out before changing review
-  }, 9000); // Change review every 9 seconds
+      setTimeout(() => {
+        setIndex((prevIndex) => (prevIndex + 1) % reviews.length); // Change review
+        setFade(true); // Start fade-in effect
+      }, 500); // Wait for fade-out before changing review
+    }, 8000); // Change review every 8 seconds
 
-  return () => clearInterval(interval); // Cleanup on unmount
-}, []);
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
+  // Detect Scroll Position to Adjust Scaling (Desktop Only)
+  useEffect(() => {
+    const handleScroll = () => {
+      // Disable scaling for mobile (below 768px)
+      if (window.innerWidth < 768) {
+        setScaleFactor(1); // Keep original size
+        return;
+      }
+
+      const frameImage = document.getElementById("frame-image");
+      if (frameImage) {
+        const rect = frameImage.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Calculate how much of the image is visible
+        const visibleHeight = Math.min(windowHeight - rect.top, rect.height);
+        const visibilityRatio = Math.max(0, Math.min(visibleHeight / rect.height, 1));
+
+        // Scale smoothly between 0.9 (when entering) to 1.1 (fully visible)
+        const newScale = 0.9 + visibilityRatio * 0.2; // Adjust this range as needed
+        setScaleFactor(newScale);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -66,7 +94,7 @@ useEffect(() => {
         {bannerImages.map((image, i) => (
           <div
             key={i}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-2500 ease-in-out ${
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
               i === bannerIndex ? "opacity-100" : "opacity-0"
             }`}
             style={{
@@ -77,7 +105,7 @@ useEffect(() => {
       </div>
 
       {/* Logo Section */}
-      <div className="mr-5 mt-5">
+      <div className="mr-5 mt-3">
         <Image
           src="/imgs/logo.png" // Ensure logo.png is inside the public folder
           alt="Company Logo"
@@ -88,28 +116,32 @@ useEffect(() => {
       </div>
 
       {/* Reviews Section */}
-      <div className="flex flex-col gap-5 items-center min-h-[200px] max-w-[1200px] justify-center">
+      <div className="min-h-[200px] max-w-[1200px]">
         {/* Auto-Fading Review Text */}
         <h1 className={`text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500 text-center italic font-thin mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
           {reviews[index]}
         </h1>
       </div>
 
-      {/* White Stars (Replacing Divider) */}
+      {/* White Stars */}
       <div className="flex justify-center gap-2 mt-5">
         {Array(5).fill(null).map((_, i) => (
           <FaStar key={i} className="text-white text-lg sm:text-xl md:text-2xl" />
         ))}
       </div>
 
-      {/* Frame Image */}
-      <div className="mt-20 mb-20 flex justify-center relative">
+      {/* Frame Image with Scaling Disabled on Mobile */}
+      <div
+        id="frame-image"
+        className="mt-20 mb-20 flex justify-center transition-transform duration-500 ease-out"
+        style={{ transform: `scale(${scaleFactor})` }} // Dynamic scaling (Desktop Only)
+      >
         {/* Shadow Behind the Image */}
         <div className="absolute w-[360px] h-[400px] bg-black opacity-30 blur-lg rounded-lg translate-y-10"></div>
         <Image
-          src="/imgs/home-frame-store.png" // Ensure the image is inside the public folder
+          src="/imgs/home-frame-store.png"
           alt="Company Logo"
-          width={350} // Adjust dimensions as needed
+          width={350}
           height={150}
           className="object-contain relative shadow-lg rounded-lg"
         />
