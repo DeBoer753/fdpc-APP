@@ -1,5 +1,5 @@
 // COMPONENTS
-import Navbar from "./components/custom/Navbar"
+import Navbar from "@/app/components/custom/navbar";
 import Footer from "./components/custom/footer";
 
 import type { Metadata } from "next";

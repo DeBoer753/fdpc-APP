@@ -20,6 +20,7 @@ export default function Home() {
 
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true); // Controls fade-in and fade-out
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrolled, setScrolled] = useState(false); // Track scroll position
   const [bannerIndex, setBannerIndex] = useState(0); // Track current banner image
   const [scaleFactor, setScaleFactor] = useState(1); // Default to no scaling
