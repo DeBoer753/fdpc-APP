@@ -2,9 +2,12 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <div className="flex flex-col lg:flex-row justify-center min-h-screen p-6 lg:p-10 gap-5">
+<div className="flex flex-col lg:flex-row justify-center items-center lg:items-start p-6 lg:p-10 gap-5 max-w-[1200px] mx-auto">
+  
+      
       {/* Image Section */}
-      <div className="w-full lg:w-[50%] flex justify-center">
+      <div className="w-full lg:w-[50%] flex justify-center lg:mt-auto lg:mb-auto">
+
         <Image
           src="/imgs/about-photo.png"
           alt="About Image"
@@ -16,8 +19,6 @@ export default function About() {
 
       {/* Text Content */}
       <div className="flex flex-col gap-5 w-full lg:w-[40%] lg:pt-15 lg:pr-10">
-
-        {/* About Title */}
         <h1 className="text-stone-500 italic text-2xl sm:text-3xl font-thin text-center lg:text-left lg:ml-5">
           About
         </h1>

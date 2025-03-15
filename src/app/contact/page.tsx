@@ -12,7 +12,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-stone-300 text-white min-h-screen py-16 px-6 md:px-16">
+    <div className="bg-stone-300 text-white min-h-screen py-16 px-6 md:px-16 max-w-[1200px] mx-auto">
       
       {/* Info Section (Location, Phone, Hours) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
