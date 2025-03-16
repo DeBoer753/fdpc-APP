@@ -131,22 +131,29 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Frame Image with Scaling Disabled on Mobile */}
-      <div
-        id="frame-image"
-        className="mt-20 mb-20 flex justify-center transition-transform duration-500 ease-out"
-        style={{ transform: `scale(${scaleFactor})` }} // Dynamic scaling (Desktop Only)
-      >
-        {/* Shadow Behind the Image */}
-        <div className="absolute w-[360px] h-[400px] bg-black opacity-30 blur-lg rounded-lg translate-y-10"></div>
-        <Image
-          src="/imgs/home-frame-store.png"
-          alt="Company Logo"
-          width={350}
-          height={150}
-          className="object-contain relative shadow-lg rounded-lg"
-        />
-      </div>
+{/* Frame Image with Scaling Disabled on Mobile */}
+<div
+  id="frame-image"
+  className="mt-20 mb-20 flex justify-center transition-transform duration-500 ease-out"
+  style={{ transform: `scale(${scaleFactor})` }} // Dynamic scaling (Desktop Only)
+>
+  {/* Shadow Behind the Image */}
+  <div
+    className="absolute w-[360px] h-[400px] bg-black blur-lg rounded-lg translate-y-10 transition-opacity duration-500 ease-out"
+    style={{
+      opacity: (1.1 - scaleFactor) / 0.2, // Fade out as scaleFactor increases
+    }}
+  ></div>
+
+  <Image
+    src="/imgs/home-frame-store.png"
+    alt="Company Logo"
+    width={350}
+    height={150}
+    className="object-contain relative shadow-lg rounded-lg"
+  />
+</div>
+
 
     </div>
   );
