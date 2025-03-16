@@ -91,19 +91,24 @@ export default function Home() {
 
       {/* Banner Section (Auto-Changing with Smooth Crossfade) */}
       <div className="relative w-full h-[400px] sm:h-[490px] bg-black overflow-hidden">
-        {/* Loop through images and set opacity */}
-        {bannerImages.map((image, i) => (
-          <div
-            key={i}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-              i === bannerIndex ? "opacity-100" : "opacity-0"
-            }`}
-            style={{
-              backgroundImage: `url('${image}')`,
-            }}
+      {bannerImages.map((image, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            i === bannerIndex ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {/* Next.js Image Component */}
+          <Image
+            src={image}
+            alt={`Banner ${i}`}
+            layout="fill" // Cover the div completely
+            objectFit="cover" // Maintain aspect ratio
+            priority={i === 0} // Load first image with priority
           />
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
 
       {/* Logo Section */}
       <div className="mr-5 mt-3">
