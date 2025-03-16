@@ -33,6 +33,7 @@ export default function Expertise() {
               alt="Services" 
               width={800} 
               height={200} 
+              priority
             />
           </div>
 

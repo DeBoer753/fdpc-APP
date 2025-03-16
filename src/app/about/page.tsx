@@ -20,6 +20,7 @@ export default function About() {
           width={800}
           height={600}
           className="object-contain w-[90%] sm:w-[70%] md:w-[40%] lg:w-[70%]"
+          priority
         />
       </motion.div>
 
