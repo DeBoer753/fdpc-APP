@@ -20,7 +20,7 @@ export default function Navbar() {
       <header className="bg-stone-400 text-white p-6">
         <div className="container mx-auto flex justify-between items-center md:flex-col">
           {/* Left-aligned title on mobile, centered on desktop */}
-          <h1 className={`${playfair.className} text-2xl sm:text-3xl italic md:text-center md:w-full`}>
+          <h1 className={`${playfair.className} text-lg sm:text-3xl italic md:text-center md:w-full`}>
           THE FRAMING DRAGON
           </h1>
 
