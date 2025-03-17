@@ -206,7 +206,7 @@ export default function Home() {
         />
       </div>
 
-      <h2 className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5">
+      <h2 className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5 italic">
         Discover a diverse selection of exquisite frames, thoughtfully crafted to complement any artwork or space. From classic elegance to modern sophistication, our collection offers the perfect frame for every style and vision.
       </h2>
 
@@ -248,7 +248,7 @@ export default function Home() {
         </h2>
 
         <a href="/contact">
-          <button className="px-6 py-3 border-4 border-[#a67c52] bg-stone-400 text-white text-lg font-medium transition-all duration-300 hover:bg-stone-500 hover:border-stone-300 cursor-pointer mb-20">
+          <button className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400  cursor-pointer mb-20">
             Contact Us
           </button>
         </a>
