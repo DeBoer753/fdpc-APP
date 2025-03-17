@@ -8,6 +8,13 @@ import Slider from "react-slick"; // Import react-slick
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 const Arrow = ({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) => (
   <button
     onClick={onClick}
@@ -164,7 +171,7 @@ export default function Home() {
       {/* Reviews Section */}
       <div className="min-h-[200px] max-w-[1200px]">
         {/* Auto-Fading Review Text */}
-        <h1 className={`text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500 text-center italic font-thin mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
+        <h1 className={` ${playfair.className} text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500 text-center mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
           {reviews[index]}
         </h1>
       </div>
@@ -236,11 +243,12 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col items-center">
-        <h2 className="max-w-[600px] text-center mb-5 text-stone-500 text-3xl italic font-thin leading-relaxed px-5">
-          ...and <span className="font-bold">much</span> more.
+        <h2 className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}>
+          ...and more.
         </h2>
+
         <a href="/contact">
-          <button className="px-6 py-3 border-2 border-stone-500 bg-stone-300 text-white text-lg font-medium transition-all duration-300 hover:bg-stone-500 hover:border-stone-300 cursor-pointer mb-20">
+          <button className="px-6 py-3 border-4 border-[#a67c52] bg-stone-400 text-white text-lg font-medium transition-all duration-300 hover:bg-stone-500 hover:border-stone-300 cursor-pointer mb-20">
             Contact Us
           </button>
         </a>
