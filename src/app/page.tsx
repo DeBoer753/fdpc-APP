@@ -19,7 +19,6 @@ const Arrow = ({ direction, onClick }: { direction: "left" | "right"; onClick: (
   </button>
 );
 
-
 export default function Home() {
   const reviews = [
     '"Raphael is a true artist. He is the best in his craft and a pleasure to work with."',
@@ -49,7 +48,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false); // Track scroll position
   const [bannerIndex, setBannerIndex] = useState(0); // Track current banner image
   const [scaleFactor, setScaleFactor] = useState(1); // Default to no scaling
-  const [sliderRef, setSliderRef] = useState(null);
+  const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
   // Detect Scroll Position for Banner Zoom Effect
   useEffect(() => {
