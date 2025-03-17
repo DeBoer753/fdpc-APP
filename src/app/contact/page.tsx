@@ -88,7 +88,7 @@ export default function Contact() {
             className={`py-2 px-6 rounded font-bold transition-all ${
               isSubmitted
                 ? "bg-blue-500 text-white"
-                : "bg-white text-stone-400 hover:bg-blue-100 "
+                : "bg-blue-100 text-stone-400 hover:text-stone-100 hover:bg-blue-200 "
             }`}
             disabled={isSubmitted}
           >

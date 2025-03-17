@@ -50,6 +50,7 @@ export default function Home() {
   ];
 
   const [index, setIndex] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fade, setFade] = useState(true); // Controls fade-in and fade-out
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrolled, setScrolled] = useState(false); // Track scroll position
@@ -151,30 +152,51 @@ export default function Home() {
       ))}
     </div>
 
-      {/* Logo Section */}
-      <motion.div 
-        className="mr-5 mt-3"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1, transition: { duration: 1 } }}
-        viewport={{ once: true }}
-        >
-        <Image
-          src="/imgs/logo.png" // Ensure logo.png is inside the public folder
-          alt="Company Logo"
-          width={150} // Adjust dimensions as needed
-          height={150}
-          className="object-contain"
-          priority
-        />
-      </motion.div>
+    {/* Logo Section + Review Dots */}
+    <motion.div
+      className="flex flex-col items-center mt-3 relative"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, transition: { duration: 1 } }}
+      viewport={{ once: true }}
+    >
+      {/* Logo Image */}
+      <Image
+        src="/imgs/logo.png"
+        alt="Company Logo"
+        width={150}
+        height={150}
+        className="object-contain"
+        priority
+      />
 
-      {/* Reviews Section */}
-      <div className="min-h-[200px] max-w-[1200px]">
-        {/* Auto-Fading Review Text */}
-        <h1 className={` ${playfair.className} text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500 text-center mt-6 mx-5 transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
-          {reviews[index]}
-        </h1>
+      {/* Navigation Dots */}
+      <div className="flex gap-3 mt-3">
+        {reviews.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)} // Change review on click
+            className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 cursor-pointer ${
+              i === index ? "bg-stone-600" : "bg-stone-400"
+            }`}
+          ></button>
+        ))}
       </div>
+
+
+      {/* Reviews Section (Now inside the Logo div) */}
+      <div className="min-h-[200px] max-w-[1200px] text-center mt-4 mx-2 overflow-hidden">
+        <motion.div
+          key={index} // This forces Framer Motion to animate on index change
+          initial={{ opacity: 0 }} // Start slightly below with opacity 0
+          animate={{ opacity: 1}} // Fade in and move up smoothly
+          exit={{ opacity: 0 }} // Fade out moving slightly up
+          transition={{ duration: 0.6 }} // Smooth 0.6s transition
+          className={` ${playfair.className} text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500`}
+        >
+          {reviews[index]}
+        </motion.div>
+      </div>
+    </motion.div>
 
       {/* White Stars */}
       <div className="flex justify-center gap-2 mt-5">
@@ -189,6 +211,7 @@ export default function Home() {
         className="mt-20 mb-20 flex justify-center transition-transform duration-500 ease-out"
         style={{ transform: `scale(${scaleFactor})` }} // Dynamic scaling (Desktop Only)
       >
+        
         {/* Shadow Behind the Image */}
         <div
           className="absolute w-[360px] h-[400px] bg-black blur-lg rounded-lg translate-y-10 transition-opacity duration-500 ease-out"
@@ -212,6 +235,7 @@ export default function Home() {
 
       {/* Frame Images Grid (Desktop) / Carousel (Mobile) */}
       <div className="max-w-[1000px] w-full mx-auto mb-20">
+
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center px-2">
           {imageUrls.map((src, index) => (
@@ -240,6 +264,7 @@ export default function Home() {
           </Slider>
           <Arrow direction="right" onClick={() => sliderRef?.slickNext()} />
         </div>
+
       </div>
 
       <div className="flex flex-col items-center">
@@ -253,8 +278,6 @@ export default function Home() {
           </button>
         </a>
       </div>
-
-
 
     </div>
   );
