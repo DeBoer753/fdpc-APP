@@ -154,7 +154,7 @@ export default function Home() {
 
     {/* Logo Section + Review Dots */}
     <motion.div
-      className="flex flex-col items-center mt-3 relative"
+      className="flex flex-col items-center relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 1 } }}
       viewport={{ once: true }}
@@ -184,7 +184,7 @@ export default function Home() {
 
 
       {/* Reviews Section (Now inside the Logo div) */}
-      <div className="min-h-[200px] max-w-[1200px] text-center mt-4 mx-2 overflow-hidden">
+      <div className="min-h-[220px] max-w-[1200px] text-center mt-4 mx-2">
         <motion.div
           key={index} // This forces Framer Motion to animate on index change
           initial={{ opacity: 0 }} // Start slightly below with opacity 0
@@ -194,16 +194,15 @@ export default function Home() {
           className={` ${playfair.className} text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500`}
         >
           {reviews[index]}
+          {/* White Stars */}
+          <div className="flex justify-center gap-2 mt-5">
+            {Array(5).fill(null).map((_, i) => (
+              <FaStar key={i} className="text-white text-lg sm:text-xl md:text-2xl" />
+            ))}
+          </div>
         </motion.div>
       </div>
     </motion.div>
-
-      {/* White Stars */}
-      <div className="flex justify-center gap-2 mt-5">
-        {Array(5).fill(null).map((_, i) => (
-          <FaStar key={i} className="text-white text-lg sm:text-xl md:text-2xl" />
-        ))}
-      </div>
 
       {/* Frame Image with Scaling Disabled on Mobile */}
       <div
