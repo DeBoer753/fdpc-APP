@@ -45,7 +45,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`font-thin relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group`}
+              className={`font-light relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group`}
             >
               <span className="relative z-10 cursor-pointer">{link.name}</span>
               
@@ -56,7 +56,7 @@ export default function Navbar() {
                   backgroundImage: `url(${link.img})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "brightness(0.9)", // Adjusts visibility for contrast
+                  filter: "brightness(0.8)", // Adjusts visibility for contrast
                 }}
               />
             </Link>

@@ -229,7 +229,7 @@ export default function Home() {
       </div>
 
       <h2 className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5 italic">
-        Discover a diverse selection of exquisite frames, thoughtfully crafted to complement any artwork or space. From classic elegance to modern sophistication, our collection offers the perfect frame for every style and vision.
+        Discover a diverse selection of frames, thoughtfully crafted to complement any artwork or space. From classic styles to modern sophistication, our collection offers the perfect frame for every style and vision.
       </h2>
 
       {/* Frame Images Grid (Desktop) / Carousel (Mobile) */}

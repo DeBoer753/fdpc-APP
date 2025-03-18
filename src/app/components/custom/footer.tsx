@@ -8,7 +8,7 @@ export default function Footer() {
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="Visit Graybuck Media (opens in a new tab)"
-            className="bg-stone-300 hover:bg-stone-500 text-stone-500 hover:text-white transition-colors duration-300 text-black font-medium px-1.5 py-1 ml-2 inline-block rounded-full"
+            className="bg-stone-300 hover:bg-stone-500 text-stone-500 hover:text-white transition-colors duration-300 text-black font-medium px-1.5 py-1 ml-2 inline-block"
           >
             Graybuck Media
           </a>
