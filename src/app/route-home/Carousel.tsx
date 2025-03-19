@@ -53,7 +53,7 @@ export default function Carousel() {
 
       {/* Section Title */}
       <h2 className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5 italic">
-        Discover a diverse selection of frames, thoughtfully crafted to complement any artwork or space. From classic styles to modern sophistication, our collection offers the perfect frame for every style and vision.
+      A well chosen frame does more than protecting. It enhances, preserves, and honors the art. Our services offers timeless craftsmanship, drawing inspiration from history, theater, and minimalist design. Whether classic or contemporary, each frame is made to complement your space and bring your vision to life.
       </h2>
 
       {/* Frame Images Grid (Desktop) / Carousel (Mobile) */}
