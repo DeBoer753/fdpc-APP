@@ -83,11 +83,11 @@ export default function Navbar() {
         {/* Sidebar Links (No Image Backgrounds) */}
         <nav className="flex flex-col space-y-4 p-6 text-lg">
           {[
-            { name: "Home", href: "/" },
-            { name: "About Us", href: "/about" },
-            { name: "Services", href: "/expertise" },
-            { name: "Contact", href: "/contact" },
-            { name: "Random", href: "/random" },
+            { name: "Home", href: "/route-home" },
+            { name: "About Us", href: "/route-about" },
+            { name: "Services", href: "/route-services" },
+            { name: "Contact", href: "/route-contact" },
+            { name: "Random", href: "/route-random" },
           ].map((link) => (
             <Link
               key={link.href}
