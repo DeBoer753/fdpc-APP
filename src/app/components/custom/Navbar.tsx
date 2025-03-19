@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Desktop Navbar (Centered) */}
         <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
           {[
-            { name: "Home", href: "/route-home", img: "/imgs/nav-link-home.png" },
+            { name: "Home", href: "/", img: "/imgs/nav-link-home.png" },
             { name: "About", href: "/route-about", img: "/imgs/nav-link-about.png" },
             { name: "Services", href: "/route-services", img: "/imgs/nav-link-services.png" },
             { name: "Contact", href: "/route-contact", img: "/imgs/nav-link-contact.png" },
@@ -83,7 +83,7 @@ export default function Navbar() {
         {/* Sidebar Links (No Image Backgrounds) */}
         <nav className="flex flex-col space-y-4 p-6 text-lg">
           {[
-            { name: "Home", href: "/route-home" },
+            { name: "Home", href: "/" },
             { name: "About Us", href: "/route-about" },
             { name: "Services", href: "/route-services" },
             { name: "Contact", href: "/route-contact" },

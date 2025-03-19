@@ -12,14 +12,16 @@ export default function About() {
   const imageRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
-  const [showTooltip, setShowTooltip] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
 
-  // Hide tooltip after 3 seconds
+  // Detect screen width & show tooltip only on desktop
   useEffect(() => {
     if (isModalOpen) {
-      setShowTooltip(true);
-      const timer = setTimeout(() => setShowTooltip(false), 3000);
-      return () => clearTimeout(timer);
+      if (window.innerWidth >= 768) {
+        setShowTooltip(true);
+        const timer = setTimeout(() => setShowTooltip(false), 3000);
+        return () => clearTimeout(timer);
+      }
     }
   }, [isModalOpen]);
 
@@ -98,7 +100,7 @@ export default function About() {
             &times;
           </button>
 
-          {/* Scroll to Zoom Tooltip */}
+          {/* Scroll to Zoom Tooltip (ONLY SHOW ON DESKTOP) */}
           {showTooltip && (
             <div className="absolute top-10 bg-white text-gray-800 px-4 py-2 rounded-md shadow-md text-sm opacity-100 transition-opacity duration-1000">
               Scroll to Zoom (Down to Zoom In, Up to Zoom Out)
