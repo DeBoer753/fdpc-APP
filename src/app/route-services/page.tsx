@@ -16,9 +16,11 @@ const services = [
   "Collage and Multi-Opening Frames",
 ];
 
-export default function Expertise() {
+export default function Services() {
+
     return (
       <div className="flex justify-center bg-gray-200 min-h-screen p-4 bg-stone-300">
+        
         {/* Motion applied to the main content container */}
         <motion.div 
           className="max-w-[1200px] w-full p-6 rounded-lg flex flex-col items-center"
@@ -51,6 +53,7 @@ export default function Expertise() {
             </ul>
           </div>
         </motion.div>
+
       </div>
     );
 }

@@ -36,11 +36,11 @@ export default function Navbar() {
         {/* Desktop Navbar (Centered) */}
         <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
           {[
-            { name: "Home", href: "/", img: "/imgs/nav-link-home.png" },
-            { name: "About", href: "/about", img: "/imgs/nav-link-about.png" },
-            { name: "Services", href: "/expertise", img: "/imgs/nav-link-services.png" },
-            { name: "Contact", href: "/contact", img: "/imgs/nav-link-contact.png" },
-            { name: "Random", href: "/random", img: "/imgs/nav-link-random.png" },
+            { name: "Home", href: "/route-home", img: "/imgs/nav-link-home.png" },
+            { name: "About", href: "/route-about", img: "/imgs/nav-link-about.png" },
+            { name: "Services", href: "/route-services", img: "/imgs/nav-link-services.png" },
+            { name: "Contact", href: "/route-contact", img: "/imgs/nav-link-contact.png" },
+            { name: "Random", href: "/route-random", img: "/imgs/nav-link-random.png" },
           ].map((link) => (
             <Link
               key={link.href}

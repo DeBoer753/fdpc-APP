@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion"; // Import Framer Motion
 
 export default function About() {
+
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start p-6 lg:p-10 gap-5 max-w-[1200px] mx-auto">
       
@@ -50,6 +51,7 @@ export default function About() {
           ligula placerat hendrerit. Curabitur sed risus in tortor ornare mollis.
         </p>
       </motion.div>
+      
     </div>
   );
 }

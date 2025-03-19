@@ -13,7 +13,6 @@ export default function Contact() {
   };
 
   return (
-    <>
       <motion.div 
         className="bg-stone-300 text-white min-h-screen py-16 px-6 md:px-16 max-w-[1200px] mx-auto"
         initial={{ opacity: 0 }}
@@ -104,6 +103,6 @@ export default function Contact() {
         </div>
         
       </motion.div>
-    </>
+
   );
 }
