@@ -57,6 +57,18 @@ export default function About() {
     setTranslate({ x: 0, y: 0 });
   };
 
+    // Disable page scroll when modal opens
+    useEffect(() => {
+      if (isModalOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [isModalOpen]);
+
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start p-6 lg:p-10 gap-5 max-w-[1200px] mx-auto">
       
