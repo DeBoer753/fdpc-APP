@@ -9,8 +9,8 @@ export default function Banner() {
 
   const bannerImages = [
     "/imgs/home-banner-1.png",
-    "/imgs/home-banner-2.png",
-    "/imgs/home-banner-3.png",
+    "/imgs/home-banner-2.jpg",
+    "/imgs/home-banner-3.jpg",
   ];
 
   // Smooth Cross fade Effect for Banner 

@@ -7,7 +7,7 @@ import { FaHandPointer } from "react-icons/fa";
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(1.2);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const imageRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -82,7 +82,7 @@ export default function About() {
       >
         {/* Image with Hover Effect */}
         <Image
-          src="/imgs/about-photo.png"
+          src="/imgs/about-photo.jpg"
           alt="About Image"
           width={800}
           height={600}
@@ -135,7 +135,7 @@ export default function About() {
             }}
           >
             <Image
-              src="/imgs/about-photo.png"
+              src="/imgs/about-photo.jpg"
               alt="Zoomed Image"
               width={1000}
               height={800}

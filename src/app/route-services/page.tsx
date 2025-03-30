@@ -31,9 +31,9 @@ export default function Services() {
           {/* Image Container */}
           <div className="flex justify-center">
             <Image 
-              src="/imgs/services-photo.png" 
+              src="/imgs/services-photo.jpg" 
               alt="Services" 
-              width={800} 
+              width={500} 
               height={200} 
               priority
             />

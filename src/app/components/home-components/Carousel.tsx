@@ -37,16 +37,22 @@ export default function Carousel() {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const imageUrls = [
-    "/imgs/home-frame-1.png",
-    "/imgs/home-frame-2.png",
-    "/imgs/home-frame-3.png",
-    "/imgs/home-frame-4.png",
-    "/imgs/home-frame-5.png",
-    "/imgs/home-frame-6.png",
+    "/imgs/home-frame-1.jpg",
+    "/imgs/home-frame-2.jpg",
+    "/imgs/home-frame-3.jpg",
+    "/imgs/home-frame-4.jpg",
+    "/imgs/home-frame-5.jpg",
+    "/imgs/home-frame-6.jpg",
+    "/imgs/home-frame-7.jpg",
+    "/imgs/home-frame-8.jpg",
+    "/imgs/home-frame-9.jpg",
+    "/imgs/home-frame-10.jpg",
+    "/imgs/home-frame-11.jpg",
+    "/imgs/home-frame-12.jpg",
   ];
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -79,7 +85,7 @@ export default function Carousel() {
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
     setIsModalOpen(true);
-    setScale(3);
+    setScale(1.3);
     setTranslate({ x: 0, y: 0 });
   };
 
@@ -176,7 +182,7 @@ export default function Carousel() {
             </div>
           )}
 
-          <div className="relative w-auto max-w-[90vw] max-h-[90vh] overflow-hidden cursor-grab active:cursor-grabbing"
+          <div className="relative w-auto max-w-[100vw] max-h-[100vh] overflow-hidden cursor-grab active:cursor-grabbing"
             ref={imageRef}
             onWheel={handleWheel}
             onDoubleClick={resetZoom}
@@ -189,7 +195,7 @@ export default function Carousel() {
               transition: isDragging ? "none" : "transform 0.2s ease-out",
             }}
           >
-            <Image src={selectedImage} alt="Zoomed Image" width={1000} height={800} className="object-contain w-full h-full" />
+            <Image src={selectedImage} alt="Zoomed Image" width={1000} height={850} className="object-contain w-full h-full" />
           </div>
         </motion.div>
       )}
@@ -197,12 +203,12 @@ export default function Carousel() {
       {/* Footer Text & Contact Button */}
       <div className="flex flex-col items-center">
         <h2 className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}>
-          ...and more.
+          ...we have plenty to choose from.
         </h2>
 
-        <a href="/route-contact">
+        <a href="/route-services">
           <button className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20">
-            Contact Us
+            Learn More
           </button>
         </a>
       </div>
