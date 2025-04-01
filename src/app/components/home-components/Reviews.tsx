@@ -50,9 +50,9 @@ export default function Reviews() {
       <Image
         src="/imgs/logo.png"
         alt="Company Logo"
-        width={150}
+        width={180}
         height={150}
-        className="object-contain"
+        className="object-contain mt-2"
         priority
       />
 

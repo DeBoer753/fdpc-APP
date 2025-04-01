@@ -39,15 +39,15 @@ export default function Carousel() {
   const imageUrls = [
     "/imgs/home-frame-1.jpg",
     "/imgs/home-frame-2.jpg",
-    "/imgs/home-frame-3.jpg",
+    "/imgs/home-frame-7.jpg",
     "/imgs/home-frame-4.jpg",
     "/imgs/home-frame-5.jpg",
     "/imgs/home-frame-6.jpg",
-    "/imgs/home-frame-7.jpg",
-    "/imgs/home-frame-8.jpg",
+    "/imgs/home-frame-3.jpg",
     "/imgs/home-frame-9.jpg",
     "/imgs/home-frame-10.jpg",
     "/imgs/home-frame-11.jpg",
+    "/imgs/home-frame-8.jpg",
     "/imgs/home-frame-12.jpg",
   ];
 

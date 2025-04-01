@@ -7,7 +7,7 @@ import { FaHandPointer } from "react-icons/fa";
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [scale, setScale] = useState(1.2);
+  const [scale, setScale] = useState(1);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const imageRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
