@@ -86,7 +86,7 @@ export default function About() {
           alt="About Image"
           width={800}
           height={600}
-          className="object-contain w-[90%] sm:w-[70%] md:w-[40%] lg:w-[70%] transition-opacity duration-300 group-hover:opacity-60"
+          className="object-contain w-[60%] sm:w-[60%] md:w-[40%] lg:w-[70%] transition-opacity duration-300 group-hover:opacity-60 rotate-270 md:rotate-270 lg:rotate-0"
           priority
         />
 
@@ -160,6 +160,18 @@ export default function About() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in libero nec urna fermentum commodo non eget ligula. Suspendisse potenti.
         </p>
 
+        <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
+          Fusce vel nulla eget odio tempus tincidunt. Phasellus nec odio non ligula placerat hendrerit. Curabitur sed risus in tortor ornare mollis.
+        </p>
+
+        <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
+          Fusce vel nulla eget odio tempus tincidunt. Phasellus nec odio non ligula placerat hendrerit. Curabitur sed risus in tortor ornare mollis.
+        </p>
+
+        <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
+          Fusce vel nulla eget odio tempus tincidunt. Phasellus nec odio non ligula placerat hendrerit. Curabitur sed risus in tortor ornare mollis.
+        </p>
+        
         <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
           Fusce vel nulla eget odio tempus tincidunt. Phasellus nec odio non ligula placerat hendrerit. Curabitur sed risus in tortor ornare mollis.
         </p>
