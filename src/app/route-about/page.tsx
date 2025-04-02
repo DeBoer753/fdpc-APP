@@ -19,7 +19,7 @@ export default function About() {
     if (isModalOpen) {
       if (window.innerWidth >= 768) {
         setShowTooltip(true);
-        const timer = setTimeout(() => setShowTooltip(false), 3000);
+        const timer = setTimeout(() => setShowTooltip(false), 5000);
         return () => clearTimeout(timer);
       }
     }
@@ -99,14 +99,14 @@ export default function About() {
       {/* Modal for Image Zoom */}
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 backdrop-blur-lg bg-black/80 flex items-center justify-center z-50 p-5 overflow-hidden"
+          className="fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-5 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           {/* Close Button */}
           <button
-            className="absolute top-5 right-5 text-white text-3xl font-bold"
+            className="absolute top-5 right-5 text-black z-50 text-3xl font-bold"
             onClick={() => setIsModalOpen(false)}
           >
             &times;
@@ -114,7 +114,7 @@ export default function About() {
 
           {/* Scroll to Zoom Tooltip (ONLY SHOW ON DESKTOP) */}
           {showTooltip && (
-            <div className="absolute top-10 bg-white text-gray-800 px-4 py-2 rounded-md shadow-md text-sm opacity-100 transition-opacity duration-1000">
+            <div className="absolute top-10 bg-stone-200 z-50 text-gray-800 px-4 py-2 rounded-md shadow-md text-sm opacity-100 transition-opacity duration-1000">
               Scroll to Zoom (Down to Zoom In, Up to Zoom Out)
             </div>
           )}

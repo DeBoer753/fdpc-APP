@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { motion } from "framer-motion";
 
 const services = [
-  "Custom Frame Design",
+  "Custom Fine Framing",
+  "French Mats",
   "Matting Services",
   "Glass Replacement",
   "Canvas Stretching",
@@ -14,7 +15,29 @@ const services = [
   "Floating Frames",
   "Mirror Framing",
   "Collage and Multi-Opening Frames",
+  "Diploma & Certificate Framing",
+  "Jersey & Sports Memorabilia Framing",
+  "Object Framing",
+  "Heirloom & Keepsake Framing",
+  "Vinyl Record Framing",
+  "Needlework & Textile Framing",
+  "Giclée Printing & Framing",
+  "Color Matching & Design Consultation",
+  "Dry Mounting",
+  "Gallery Wall Planning",
+  "UV-Protection Glass",
+  "Anti-Reflective Glass",
+  "Acrylic & Plexiglass Framing",
+  "Oversized or Panorama Framing",
+  "Archival Backing & Taping",
+  "On-Site Consultations",
+  "Pickup & Delivery Services",
+  "Rush Framing",
+  "Ready-Made Frames",
+  "Gift Cards",
+  "Hanging Hardware Installation",
 ];
+
 
 export default function Services() {
 
