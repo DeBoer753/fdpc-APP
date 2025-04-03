@@ -2,7 +2,8 @@
 import Banner from "./components/home-components/Banner";
 import Reviews from "./components/home-components/Reviews";
 import Picture from "./components/home-components/Picture";
-import Carousel from "./components/home-components/Carousel"
+import Carousel from "./components/home-components/Carousel";
+import Work from "./components/home-components/Work";
 
 // HOME
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
       <Reviews/>
       <Picture/>
       <Carousel/>
-
+      <Work />
     </div>
   );
 }

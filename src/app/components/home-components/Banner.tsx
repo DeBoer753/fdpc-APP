@@ -8,9 +8,9 @@ export default function Banner() {
   const [bannerIndex, setBannerIndex] = useState(0); // Track current banner image
 
   const bannerImages = [
+    "/imgs/home-banner-3.jpg",
     "/imgs/home-banner-1.jpg",
     "/imgs/home-banner-2.jpg",
-    "/imgs/home-banner-3.jpg",
   ];
 
   // Smooth Cross fade Effect for Banner 

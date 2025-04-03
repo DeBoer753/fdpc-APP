@@ -21,7 +21,6 @@ const services = [
   "Heirloom & Keepsake Framing",
   "Vinyl Record Framing",
   "Needlework & Textile Framing",
-  "Giclée Printing & Framing",
   "Color Matching & Design Consultation",
   "Dry Mounting",
   "Gallery Wall Planning",
@@ -33,8 +32,6 @@ const services = [
   "On-Site Consultations",
   "Pickup & Delivery Services",
   "Rush Framing",
-  "Ready-Made Frames",
-  "Gift Cards",
   "Hanging Hardware Installation",
 ];
 

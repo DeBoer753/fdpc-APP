@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Desktop Navbar (Centered) */}
         <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
           {[
-            { name: "Home", href: "/", img: "/imgs/nav-link-home.png" },
+            { name: "Home", href: "/", img: "/imgs/nav-link-home.jpg" },
             { name: "About", href: "/route-about", img: "/imgs/nav-link-about.png" },
             { name: "Services", href: "/route-services", img: "/imgs/nav-link-services.png" },
             { name: "Contact", href: "/route-contact", img: "/imgs/nav-link-contact.png" },
@@ -56,7 +56,7 @@ export default function Navbar() {
                   backgroundImage: `url(${link.img})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "brightness(0.8)", // Adjusts visibility for contrast
+                  filter: "brightness(1.2)", // Adjusts visibility for contrast
                 }}
               />
             </Link>
