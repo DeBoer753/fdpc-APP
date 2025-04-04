@@ -200,7 +200,7 @@ export default function Carousel() {
         </motion.div>
       )}
 
-      {/* Footer Text & Contact Button */}
+      {/* Text & Contact Button */}
       <div className="flex flex-col items-center">
         <h2 className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}>
           ...we have plenty to choose from.
