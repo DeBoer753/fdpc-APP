@@ -19,7 +19,7 @@ export default function About() {
           alt="About Image"
           width={800}
           height={600}
-          className="object-contain w-[60%] sm:w-[60%] md:w-[40%] lg:w-[70%]"
+          className="object-contain w-[80%] sm:w-[60%] md:w-[40%] lg:w-[70%]"
           priority
         />
       </motion.div>
