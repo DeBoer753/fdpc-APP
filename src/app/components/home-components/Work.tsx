@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,7 +26,7 @@ const Arrow = ({ direction, onClick }: { direction: "left" | "right"; onClick: (
 );
 
 export default function Work() {
-  const images = ["home-work-1.jpg", "home-work-2.jpg"];
+  const images = ["home-work-2.jpg", "home-work-1.jpg"];
   const [isMobile, setIsMobile] = useState(false);
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
@@ -47,12 +48,11 @@ export default function Work() {
     arrows: false,
   };
 
-  // Track screen width
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -109,7 +109,6 @@ export default function Work() {
   return (
     <div className="flex flex-col items-center p-6 lg:p-10 max-w-[1200px] mx-auto">
       {isMobile ? (
-        // Mobile Carousel
         <div className="relative w-full max-w-[300px] mx-auto mt-5">
           <Arrow direction="left" onClick={() => sliderRef?.slickPrev()} />
           <Slider {...settings} ref={setSliderRef}>
@@ -134,11 +133,14 @@ export default function Work() {
           <Arrow direction="right" onClick={() => sliderRef?.slickNext()} />
         </div>
       ) : (
-        // Desktop Grid
         <div className="flex justify-center flex-wrap gap-5">
           {images.map((img, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, x: index === 0 ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: index * 0.2 }}
+              viewport={{ once: true }}
               className="relative cursor-pointer border-2 border-stone-500 group"
               onClick={() => openModal(`/imgs/${img}`)}
             >
@@ -152,12 +154,11 @@ export default function Work() {
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       )}
 
-      {/* Modal */}
       {isModalOpen && selectedImage && (
         <div className="fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-5 overflow-hidden">
           <button
@@ -198,7 +199,6 @@ export default function Work() {
         </div>
       )}
 
-      {/* Text & Contact Button */}
       <div className="flex flex-col items-center mt-20">
         <h2 className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}>
           ...some work of ours.
