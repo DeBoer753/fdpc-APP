@@ -7,7 +7,8 @@ export const metadata: Metadata = {
   title: "The Framing Dragon | Custom Framing in Mill Valley",
   description: "A Bay Area trusted custom framing shop. Get high-quality frames for photos, artwork, posters, and collectibles at The Framing Dragon.",
   icons: {
-    icon: "/src/favicon.ico", // Add this line
+    icon: "/src/favicon.ico", 
+    apple: "/src/apple-touch-icon.png", 
   },
 };
 
