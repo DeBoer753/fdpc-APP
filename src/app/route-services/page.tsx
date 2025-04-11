@@ -39,7 +39,7 @@ const services = [
 export default function Services() {
 
     return (
-      <div className="flex justify-center bg-gray-200 min-h-screen p-4 bg-stone-300">
+      <div className="flex flex-col items-center justify-center bg-gray-200 min-h-screen p-4 bg-stone-300">
         
         {/* Motion applied to the main content container */}
         <motion.div 
@@ -73,6 +73,12 @@ export default function Services() {
             </ul>
           </div>
         </motion.div>
+
+        <a href="/route-contact">
+          <button className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20">
+            Contact Us
+          </button>
+        </a>
 
       </div>
     );

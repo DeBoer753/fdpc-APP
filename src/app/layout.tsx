@@ -4,8 +4,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Framing Dragon",
-  description: "Custom Framing in Marin County",
+  title: "The Framing Dragon | Custom Framing in Mill Valley",
+  description: "A Bay Area trusted custom framing shop. Get high-quality frames for photos, artwork, posters, and collectibles at The Framing Dragon.",
   icons: {
     icon: "/src/favicon.ico", // Add this line
   },

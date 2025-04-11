@@ -208,7 +208,7 @@ export default function Carousel() {
 
         <a href="/route-services">
           <button className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20">
-            Learn More
+            Our Services
           </button>
         </a>
       </div>

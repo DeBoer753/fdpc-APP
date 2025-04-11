@@ -81,7 +81,7 @@ export default function Navbar() {
         </div>
 
         {/* Sidebar Links (No Image Backgrounds) */}
-        <nav className="flex flex-col space-y-4 p-6 text-lg">
+        <nav className="flex flex-col space-y-4 p-6 text-lg ">
           {[
             { name: "Home", href: "/" },
             { name: "About Us", href: "/route-about" },

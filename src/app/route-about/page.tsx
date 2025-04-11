@@ -50,6 +50,14 @@ export default function About() {
         <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
           For five years, Bill trained him in the art and discipline of custom framing. Eventually, Raphael took over the business and became the new steward of Framing Dragon — where he’s been framing with purpose for over 30 years.
         </p>
+
+
+        <a href="/route-services" className="mx-auto">
+          <button className=" px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-md font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer">
+            Our Services
+          </button>
+        </a>
+
       </motion.div>
     </div>
   );
