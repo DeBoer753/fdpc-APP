@@ -28,7 +28,7 @@ const services = [
   "Anti-Reflective Glass",
   "Acrylic & Plexiglass Framing",
   "Oversized or Panorama Framing",
-  "Archival Backing & Taping",
+  "Archival Backing & Taping", 
   "On-Site Consultations",
   "Pickup & Delivery Services",
   "Rush Framing",
@@ -39,7 +39,7 @@ const services = [
 export default function Services() {
 
     return (
-      <div className="flex flex-col items-center justify-center bg-gray-200 min-h-screen p-4 bg-stone-300">
+      <div className="flex flex-col items-center justify-start bg-gray-200 min-h-screen p-4 bg-stone-300">
         
         {/* Motion applied to the main content container */}
         <motion.div 

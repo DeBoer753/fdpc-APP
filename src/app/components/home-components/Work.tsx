@@ -26,7 +26,7 @@ const Arrow = ({ direction, onClick }: { direction: "left" | "right"; onClick: (
 );
 
 export default function Work() {
-  const images = ["home-work-2.jpg", "home-work-1.jpg"];
+  const images = ["home-work-2.jpg", "home-work-1.jpg", "home-work-3.jpg", "home-work-4.jpg"];
   const [isMobile, setIsMobile] = useState(false);
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
@@ -137,7 +137,7 @@ export default function Work() {
           {images.map((img, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index === 0 ? -100 : 100 }}
+              initial={{ x: index % 2 === 0 ? -100 : 100, opacity: 0 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, delay: index * 0.2 }}
               viewport={{ once: true }}

@@ -37,10 +37,10 @@ export default function Navbar() {
         <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
           {[
             { name: "Home", href: "/", img: "/imgs/nav-link-home.jpg" },
-            { name: "About", href: "/route-about", img: "/imgs/nav-link-about.png" },
-            { name: "Services", href: "/route-services", img: "/imgs/nav-link-services.png" },
-            { name: "Contact", href: "/route-contact", img: "/imgs/nav-link-contact.png" },
-            { name: "Random", href: "/route-random", img: "/imgs/nav-link-random.png" },
+            { name: "About", href: "/route-about", img: "/imgs/nav-link-about.jpg" },
+            { name: "Services", href: "/route-services", img: "/imgs/nav-link-services.jpg" },
+            { name: "Contact", href: "/route-contact", img: "/imgs/nav-link-contact.jpg" },
+            { name: "Random", href: "/route-random", img: "/imgs/nav-link-random.jpg" },
           ].map((link) => (
             <Link
               key={link.href}

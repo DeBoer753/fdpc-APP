@@ -36,21 +36,16 @@ export default function About() {
         </h1>
 
         <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
-          Before becoming involved in the framing industry, Raphael often traveled for work and he grew concerned about time slipping away from his family. He imagined missing out on the small moments that make a life full.
+          Framing Dragon is a custom framing studio located in Mill Valley, California, dedicated to preserving and showcasing the meaningful pieces in your life. With over 30 years of experience, we specialize in high-quality, archival framing for artwork, photography, documents, memorabilia, and more.
         </p>
 
         <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
-          One day, he noticed the office plants kept dying under the harsh fluorescent lights. The building staff would then swap them out with fresh ones. That stuck with Raphael — how easily things were replaced instead of cared for.
+          We believe that framing is both an art and a craft. Each piece we frame is handled with care, attention to detail, and a commitment to longevity. From classic frames to modern designs, our curated selection of materials ensures we can match a wide variety of styles and preferences.
         </p>
 
         <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
-          Around that same time, he heard about a local frame shop closing that had originally opened in 1976. Curious, he walked in — and walked out with a new chapter. The original owner, a skilled master framer named Bill, took Raphael under his wing.
+         Whether you`re a local artist, a collector, or someone looking to frame a sentimental item, our team is here to guide you through the process and help bring your vision to life. At Framing Dragon, we’re passionate about creating frames that not only protect but also enhance what matters most.
         </p>
-
-        <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
-          For five years, Bill trained him in the art and discipline of custom framing. Eventually, Raphael took over the business and became the new steward of Framing Dragon — where he’s been framing with purpose for over 30 years.
-        </p>
-
 
         <a href="/route-services" className="mx-auto">
           <button className=" px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-md font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer">
