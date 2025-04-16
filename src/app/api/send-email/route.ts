@@ -16,6 +16,12 @@ export async function POST(req: Request) {
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong><br/>${message}</p>
+
+        <br/><br/>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 30px;">
+          <img src="https://graybuckmedia.com/imgs/graybuck_logo.png" alt="Graybuck Media Logo" width="40" height="40" style="border-radius: 6px;" />
+          <p style="font-style: italic; color: #888; margin: 0;">Powered by Graybuck Media</p>
+        </div>
       `,
     });
 
