@@ -7,11 +7,29 @@ import { motion } from "framer-motion"; // Import Framer Motion
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    setIsSubmitted(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+  
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+  
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      body: JSON.stringify({ name, email, message }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  
+    if (res.ok) {
+      setIsSubmitted(true);
+      form.reset();
+    }
   };
-
+  
   return (
       <motion.div 
         className="bg-stone-300 text-white min-h-screen py-16 px-6 md:px-16 max-w-[1200px] mx-auto"
@@ -64,22 +82,17 @@ export default function Contact() {
           <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
             <label className="flex flex-col text-stone-500">
               Name: *
-              <input type="text" className="bg-stone-400 text-white p-2 mt-1 rounded" required />
+              <input name="name" type="text" className="bg-stone-400 text-white p-2 mt-1 rounded" required />
             </label>
 
             <label className="flex flex-col text-stone-500">
               Email: *
-              <input type="email" className="bg-stone-400 text-white p-2 mt-1 rounded" required />
+              <input name="email" type="email" className="bg-stone-400 text-white p-2 mt-1 rounded" required />
             </label>
 
             <label className="flex flex-col text-stone-500">
               Message: *
-              <textarea className="bg-stone-400 text-white p-2 mt-1 rounded h-32" required />
-            </label>
-
-            <label className="flex flex-col text-stone-500">
-              Answer A Question To Prevent Spam: 1+1=? *
-              <input type="text" className="bg-stone-400 text-white p-2 mt-1 rounded" required />
+              <textarea name="message" className="bg-stone-400 text-white p-2 mt-1 rounded h-52" required />
             </label>
 
             {/* Submit Button with Transition Effect */}
