@@ -112,7 +112,7 @@ export default function Contact() {
 
         {/* Location List */}
         <div className="text-center text-stone-500 mt-10 text-sm">
-          text of type of service – text of type of service – text of type of service
+          object framing – custom fine framing – restoration - and much more
         </div>
         
       </motion.div>
