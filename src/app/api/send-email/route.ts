@@ -27,8 +27,8 @@ export async function POST(req: Request) {
             />
           </a>
           <p style="font-style: italic; color: #888; margin: 0;">
-            Powered by Graybuck Media<br/>
-            <span style="font-size: 12px;">Evolving creatively, protecting your vision | Web Design & Development</span>
+            Powered by Graybuck Media | Web Design, Web Development, Photo, & Video<br/>
+            <span style="font-size: 12px;">Evolving creatively, protecting your vision</span>
           </p>
         </div>
       `,
