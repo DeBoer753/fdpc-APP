@@ -9,10 +9,10 @@ export async function POST(req: Request) {
     const data = await resend.emails.send({
       from: process.env.FROM_EMAIL!,
       to: process.env.TO_EMAIL!,
-      subject: `New message from ${name}`,
+      subject: `Framing Dragon Inquiry: Message from ${name}`,
       replyTo: email,
       html: `
-        <h2>Contact Form Submission</h2>
+        <h2>New Message from ${name}</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong><br/>${message}</p>
