@@ -19,8 +19,8 @@ export async function POST(req: Request) {
 
         <br/><br/>
         <div style="display: flex; align-items: center; gap: 10px; margin-top: 30px;">
-          <img src="https://graybuckmedia.com/imgs/graybuck_logo.png" alt="Graybuck Media Logo" width="40" height="40" style="border-radius: 6px;" />
-          <p style="font-style: italic; color: #888; margin: 0;">Powered by Graybuck Media</p>
+          <img src="https://graybuckmedia.com/imgs/graybuck_logo.png" alt="Graybuck Media Logo" width="50" height="70" style="border-radius: 6px;" />
+          <p style="font-style: italic; color: #888; margin: 0;">Powered by Graybuck Media | Evolving creatively, protecting your vision | Web Design & Web Development</p>
         </div>
       `,
     });
