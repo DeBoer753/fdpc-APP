@@ -7,14 +7,12 @@ import Work from "./components/home-components/Work";
 
 // HOME
 export default function Home() {
-
   return (
     <div className="flex flex-col items-center">
-
-      <Banner/>
-      <Reviews/>
-      <Picture/>
-      <Carousel/>
+      <Banner />
+      <Reviews />
+      <Picture />
+      <Carousel />
       <Work />
     </div>
   );

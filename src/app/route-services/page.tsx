@@ -1,10 +1,10 @@
-"use client";
+"use client"; // Needed for Next.js App Router (useState)
 
 // PLUGINS & OTHER
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// services array being mapped:
+// services array being mapped
 const services = [
   "Custom Fine Framing",
   "French Mats",

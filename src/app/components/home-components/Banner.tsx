@@ -1,31 +1,30 @@
-"use client";
+"use client"; // Needed for Next.js App Router (useState)
 
+// PLUGINS & OTHER
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const bannerImages = [
+  "/imgs/home-banner-3.jpg",
+  "/imgs/home-banner-1.jpg",
+  "/imgs/home-banner-2.jpg",
+];
+
+// BANNER
 export default function Banner() {
-  
-  const [bannerIndex, setBannerIndex] = useState(0); // Track current banner image
+  const [bannerIndex, setBannerIndex] = useState(0);
 
-  const bannerImages = [
-    "/imgs/home-banner-3.jpg",
-    "/imgs/home-banner-1.jpg",
-    "/imgs/home-banner-2.jpg",
-  ];
-
-  // Smooth Cross fade Effect for Banner 
+  // smooth Cross fade Effect for banner
   useEffect(() => {
     const bannerInterval = setInterval(() => {
-      setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length); // Loop through images
-    }, 6000); // Change banner every 6 seconds
+      setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
+    }, 6000);
 
-    return () => clearInterval(bannerInterval); // Cleanup on unmount
+    return () => clearInterval(bannerInterval);
   }, [bannerImages.length]);
 
   return (
     <div className="relative w-full h-[400px] sm:h-[490px] bg-black overflow-hidden">
-
-      {/* Banner */}
       {bannerImages.map((image, i) => (
         <div
           key={i}
@@ -36,13 +35,12 @@ export default function Banner() {
           <Image
             src={image}
             alt={`Banner ${i}`}
-            layout="fill" // Cover the div completely
-            objectFit="cover" // Maintain aspect ratio
-            priority={i === 0} // Load first image with priority
+            layout="fill"
+            objectFit="cover"
+            priority={i === 0}
           />
         </div>
       ))}
-
     </div>
   );
 }

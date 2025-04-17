@@ -1,7 +1,10 @@
+// PLUGINS & OTHER
 import { Resend } from 'resend';
 
+// retrieves api key from env variables to autorthize the app to send emails using your resend account
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// POST
 export async function POST(req: Request) {
   const { name, email, message } = await req.json();
 

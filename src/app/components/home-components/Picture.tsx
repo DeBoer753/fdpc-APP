@@ -1,18 +1,19 @@
-"use client";
+"use client"; // Needed for Next.js App Router (useState)
 
+// PLUGINS & OTHER
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+// PICTURE
 export default function Picture() {
-  
   const [scaleFactor, setScaleFactor] = useState(1); // Default to no scaling
 
-  // Detect Scroll Position to Adjust Scaling (Desktop Only)
+  // detect Scroll Position to Adjust Scaling (Desktop Only)
   useEffect(() => {
     const handleScroll = () => {
-      // Disable scaling for mobile (below 768px)
+      // disable scaling for mobile (below 768px)
       if (window.innerWidth < 768) {
-        setScaleFactor(1); // Keep original size
+        setScaleFactor(1);
         return;
       }
 
@@ -21,11 +22,14 @@ export default function Picture() {
         const rect = frameImage.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        // Calculate how much of the image is visible
+        // calculate how much of the image is visible
         const visibleHeight = Math.min(windowHeight - rect.top, rect.height);
-        const visibilityRatio = Math.max(0, Math.min(visibleHeight / rect.height, 1));
+        const visibilityRatio = Math.max(
+          0,
+          Math.min(visibleHeight / rect.height, 1)
+        );
 
-        // Scale smoothly between 0.9 (when entering) to 1.1 (fully visible)
+        // scale smoothly between 0.9 (when entering) to 1.1 (fully visible)
         const newScale = 0.9 + visibilityRatio * 0.2; // Adjust this range as needed
         setScaleFactor(newScale);
       }
@@ -41,7 +45,6 @@ export default function Picture() {
       className="mt-20 mb-20 flex justify-center transition-transform duration-500 ease-out"
       style={{ transform: `scale(${scaleFactor})` }} // Dynamic scaling (Desktop Only)
     >
-
       {/* Shadow Behind the Image */}
       <div
         className="absolute w-[360px] h-[400px] bg-black blur-lg rounded-lg translate-y-10 transition-opacity duration-500 ease-out"
@@ -58,7 +61,6 @@ export default function Picture() {
         height={150}
         className="object-contain relative shadow-lg rounded-lg"
       />
-
     </div>
   );
 }

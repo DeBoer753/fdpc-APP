@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Needed for Next.js App Router (useState)
 
 // PLUGINS & OTHER
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start p-6 lg:p-10 gap-5 max-w-[1200px] mx-auto">
+      {/* Static Image Section */}
       <motion.div
         className="w-full lg:w-[50%] flex justify-center lg:mt-auto lg:mb-auto"
         initial={{ opacity: 0 }}
@@ -22,7 +23,14 @@ export default function About() {
           className="object-contain w-[80%] sm:w-[60%] md:w-[40%] lg:w-[70%]"
           priority
         />
+      </motion.div>
 
+      <motion.div
+        className="flex flex-col gap-5 w-full lg:w-[40%] lg:pt-0 lg:pr-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
+        viewport={{ once: true }}
+      >
         <h1 className="text-stone-500 italic text-2xl sm:text-3xl font-thin text-center lg:text-left lg:ml-5">
           About
         </h1>

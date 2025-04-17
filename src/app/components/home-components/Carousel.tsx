@@ -1,5 +1,9 @@
-"use client";
+"use client"; // Needed for Next.js App Router (useState)
 
+// COMPONENTS
+import Arrow from "../custom/Arrow";
+
+// PLUGINS & OTHER
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -9,22 +13,29 @@ import "slick-carousel/slick/slick-theme.css";
 import { Playfair_Display } from "next/font/google";
 import { FaHandPointer } from "react-icons/fa";
 
+// font
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: "400",
 });
 
-const Arrow = ({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className={`absolute top-1/2 transform -translate-y-1/2 bg-transparent backdrop-blur-md text-stone-700 p-3 z-10 mx-5 transition-all duration-300 hover:bg-white/10 text-2xl ${
-      direction === "left" ? "left-[-50px]" : "right-[-50px]"
-    }`}
-  >
-    {direction === "left" ? "←" : "→"}
-  </button>
-);
+// images being mapped
+const imageUrls = [
+  "/imgs/home-frame-1.jpg",
+  "/imgs/home-frame-2.jpg",
+  "/imgs/home-frame-7.jpg",
+  "/imgs/home-frame-4.jpg",
+  "/imgs/home-frame-5.jpg",
+  "/imgs/home-frame-6.jpg",
+  "/imgs/home-frame-3.jpg",
+  "/imgs/home-frame-9.jpg",
+  "/imgs/home-frame-10.jpg",
+  "/imgs/home-frame-11.jpg",
+  "/imgs/home-frame-8.jpg",
+  "/imgs/home-frame-12.jpg",
+];
 
+// CAROUSEL
 export default function Carousel() {
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,21 +47,7 @@ export default function Carousel() {
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const imageUrls = [
-    "/imgs/home-frame-1.jpg",
-    "/imgs/home-frame-2.jpg",
-    "/imgs/home-frame-7.jpg",
-    "/imgs/home-frame-4.jpg",
-    "/imgs/home-frame-5.jpg",
-    "/imgs/home-frame-6.jpg",
-    "/imgs/home-frame-3.jpg",
-    "/imgs/home-frame-9.jpg",
-    "/imgs/home-frame-10.jpg",
-    "/imgs/home-frame-11.jpg",
-    "/imgs/home-frame-8.jpg",
-    "/imgs/home-frame-12.jpg",
-  ];
-
+  // navigation dots (currently do not show because it pushed down div)
   const settings = {
     dots: false,
     infinite: true,
@@ -60,7 +57,7 @@ export default function Carousel() {
     arrows: false,
   };
 
-  // Disable page scroll when modal is open
+  // disable page scroll when modal is open
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
@@ -72,7 +69,7 @@ export default function Carousel() {
     };
   }, [isModalOpen]);
 
-  // Show tooltip on desktop when modal opens
+  // show tooltip on desktop when modal opens
   useEffect(() => {
     if (isModalOpen && window.innerWidth >= 768) {
       setShowTooltip(true);
@@ -81,7 +78,7 @@ export default function Carousel() {
     }
   }, [isModalOpen]);
 
-  // Open modal with selected image
+  // open modal with selected image and reset zoom/position
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
     setIsModalOpen(true);
@@ -89,20 +86,24 @@ export default function Carousel() {
     setTranslate({ x: 0, y: 0 });
   };
 
-  // Scroll-based zoom
+  // zoom image in/out using mouse wheel scroll
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     const zoomFactor = e.deltaY > 0 ? 1.1 : 0.9;
     setScale((prev) => Math.min(Math.max(prev * zoomFactor, 1), 4));
   };
 
-  // Drag-to-move image
+  // start dragging the image and record initial mouse position
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsDragging(true);
-    setStartPosition({ x: e.clientX - translate.x, y: e.clientY - translate.y });
+    setStartPosition({
+      x: e.clientX - translate.x,
+      y: e.clientY - translate.y,
+    });
   };
 
+  // move the image while dragging
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     setTranslate({
@@ -111,19 +112,23 @@ export default function Carousel() {
     });
   };
 
+  // stop dragging when mouse is released
   const handleMouseUp = () => setIsDragging(false);
 
-  // Reset zoom on double-click
+  // reset zoom and image position when double-clicking
   const resetZoom = () => {
     setScale(1);
     setTranslate({ x: 0, y: 0 });
   };
 
+
   return (
     <div className="flex flex-col items-center">
       {/* Section Title */}
       <h2 className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5 italic">
-        A well chosen frame does more than protecting. It enhances, preserves, and honors the art. Our services offer timeless craftsmanship, drawing inspiration from history, theater, and minimalist design.
+        A well chosen frame does more than protecting. It enhances, preserves,
+        and honors the art. Our services offer timeless craftsmanship, drawing
+        inspiration from history, theater, and minimalist design.
       </h2>
 
       {/* Desktop Image Grid */}
@@ -139,7 +144,12 @@ export default function Carousel() {
               viewport={{ once: true }}
               onClick={() => openModal(src)}
             >
-              <Image src={src} alt={`Image ${index + 1}`} fill className="object-cover transition-opacity duration-300 group-hover:opacity-60" />
+              <Image
+                src={src}
+                alt={`Image ${index + 1}`}
+                fill
+                className="object-cover transition-opacity duration-300 group-hover:opacity-60"
+              />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
               </div>
@@ -152,8 +162,17 @@ export default function Carousel() {
           <Arrow direction="left" onClick={() => sliderRef?.slickPrev()} />
           <Slider {...settings} ref={setSliderRef}>
             {imageUrls.map((src, index) => (
-              <div key={index} className="relative w-full h-[350px] border-2 border-stone-500 cursor-pointer group" onClick={() => openModal(src)}>
-                <Image src={src} alt={`Image ${index + 1}`} fill className="object-cover transition-opacity duration-300 group-hover:opacity-60" />
+              <div
+                key={index}
+                className="relative w-full h-[350px] border-2 border-stone-500 cursor-pointer group"
+                onClick={() => openModal(src)}
+              >
+                <Image
+                  src={src}
+                  alt={`Image ${index + 1}`}
+                  fill
+                  className="object-cover transition-opacity duration-300 group-hover:opacity-60"
+                />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
                 </div>
@@ -166,12 +185,16 @@ export default function Carousel() {
 
       {/* Modal for Zoomable Images */}
       {isModalOpen && selectedImage && (
-        <motion.div className="fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-5 overflow-hidden"
+        <motion.div
+          className="fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-5 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <button className="absolute top-5 right-5 text-black text-3xl font-bold z-50" onClick={() => setIsModalOpen(false)}>
+          <button
+            className="absolute top-5 right-5 text-black text-3xl font-bold z-50"
+            onClick={() => setIsModalOpen(false)}
+          >
             &times;
           </button>
 
@@ -182,7 +205,8 @@ export default function Carousel() {
             </div>
           )}
 
-          <div className="relative w-auto max-w-[100vw] max-h-[100vh] overflow-hidden cursor-grab active:cursor-grabbing"
+          <div
+            className="relative w-auto max-w-[100vw] max-h-[100vh] overflow-hidden cursor-grab active:cursor-grabbing"
             ref={imageRef}
             onWheel={handleWheel}
             onDoubleClick={resetZoom}
@@ -195,14 +219,22 @@ export default function Carousel() {
               transition: isDragging ? "none" : "transform 0.2s ease-out",
             }}
           >
-            <Image src={selectedImage} alt="Zoomed Image" width={1000} height={850} className="object-contain w-full h-full" />
+            <Image
+              src={selectedImage}
+              alt="Zoomed Image"
+              width={1000}
+              height={850}
+              className="object-contain w-full h-full"
+            />
           </div>
         </motion.div>
       )}
 
       {/* Text & Contact Button */}
       <div className="flex flex-col items-center">
-        <h2 className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}>
+        <h2
+          className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}
+        >
           ...we have plenty to choose from.
         </h2>
 

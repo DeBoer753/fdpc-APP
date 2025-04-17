@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-// location, phone, hours info being mapped:
+// location, phone, hours info being mapped
 const infoSections = [
   {
     icon: <FaMapMarkerAlt className="text-3xl mx-auto mb-2" />,

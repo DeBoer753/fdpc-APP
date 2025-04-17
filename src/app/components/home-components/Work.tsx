@@ -1,5 +1,9 @@
 "use client";
 
+// COMPONENTS
+import Arrow from "../custom/Arrow";
+
+// PLUGINS & OTHER
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -9,24 +13,22 @@ import "slick-carousel/slick/slick-theme.css";
 import { Playfair_Display } from "next/font/google";
 import { FaHandPointer } from "react-icons/fa";
 
+// font
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: "400",
 });
 
-const Arrow = ({ direction, onClick }: { direction: "left" | "right"; onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className={`absolute top-1/2 transform -translate-y-1/2 bg-transparent backdrop-blur-md text-stone-700 p-3 z-10 mx-5 transition-all duration-300 hover:bg-white/10 text-2xl ${
-      direction === "left" ? "left-[-50px]" : "right-[-50px]"
-    }`}
-  >
-    {direction === "left" ? "←" : "→"}
-  </button>
-);
+// images being mapped
+const images = [
+  "home-work-2.jpg",
+  "home-work-1.jpg",
+  "home-work-3.jpg",
+  "home-work-4.jpg",
+];
 
+// WORK
 export default function Work() {
-  const images = ["home-work-2.jpg", "home-work-1.jpg", "home-work-3.jpg", "home-work-4.jpg"];
   const [isMobile, setIsMobile] = useState(false);
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
@@ -39,6 +41,7 @@ export default function Work() {
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const [showTooltip, setShowTooltip] = useState(false);
 
+  // navigation dots (currently do not show because it pushed down div)
   const settings = {
     dots: false,
     infinite: true,
@@ -48,6 +51,7 @@ export default function Work() {
     arrows: false,
   };
 
+  // update isMobile based on screen width
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -57,6 +61,7 @@ export default function Work() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // open the modal with the selected image and reset zoom/position
   const openModal = (src: string) => {
     setSelectedImage(src);
     setIsModalOpen(true);
@@ -64,18 +69,24 @@ export default function Work() {
     setTranslate({ x: 0, y: 0 });
   };
 
+  // zoom the image in/out based on scroll direction
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     const zoomFactor = e.deltaY > 0 ? 1.1 : 0.9;
     setScale((prev) => Math.min(Math.max(prev * zoomFactor, 1), 4));
   };
 
+  // begin dragging and track initial cursor position
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsDragging(true);
-    setStartPosition({ x: e.clientX - translate.x, y: e.clientY - translate.y });
+    setStartPosition({
+      x: e.clientX - translate.x,
+      y: e.clientY - translate.y,
+    });
   };
 
+  // update image position while dragging
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     setTranslate({
@@ -84,13 +95,16 @@ export default function Work() {
     });
   };
 
+  // stop dragging on mouse release
   const handleMouseUp = () => setIsDragging(false);
 
+  // reset zoom and image position to default
   const resetZoom = () => {
     setScale(1);
     setTranslate({ x: 0, y: 0 });
   };
 
+  // disable page scrolling when modal is open
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? "hidden" : "";
     return () => {
@@ -98,6 +112,7 @@ export default function Work() {
     };
   }, [isModalOpen]);
 
+  // show scroll-to-zoom tooltip briefly when modal opens on desktop
   useEffect(() => {
     if (isModalOpen && window.innerWidth >= 768) {
       setShowTooltip(true);
@@ -200,7 +215,9 @@ export default function Work() {
       )}
 
       <div className="flex flex-col items-center mt-20">
-        <h2 className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}>
+        <h2
+          className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}
+        >
           ...some work of ours.
         </h2>
 

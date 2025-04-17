@@ -1,16 +1,35 @@
 "use client"; // Needed for Next.js App Router (useState)
 
+// PLUGINS & OTHER
 import { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi"; // Import icons
-
 import { Playfair_Display } from "next/font/google";
 
+// font
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: "500",
 });
 
+// navigation links being mapped
+const navlinks = [
+  { name: "Home", href: "/", img: "/imgs/nav-link-home.jpg" },
+  { name: "About", href: "/route-about", img: "/imgs/nav-link-about.jpg" },
+  {
+    name: "Services",
+    href: "/route-services",
+    img: "/imgs/nav-link-services.jpg",
+  },
+  {
+    name: "Contact",
+    href: "/route-contact",
+    img: "/imgs/nav-link-contact.jpg",
+  },
+  { name: "Random", href: "/route-random", img: "/imgs/nav-link-random.jpg" },
+];
+
+// NAVBAR
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,8 +39,10 @@ export default function Navbar() {
       <header className="bg-stone-400 text-white p-6">
         <div className="container mx-auto flex justify-between items-center md:flex-col">
           {/* Left-aligned title on mobile, centered on desktop */}
-          <h1 className={`${playfair.className} text-lg sm:text-3xl italic md:text-center md:w-full`}>
-          THE FRAMING DRAGON
+          <h1
+            className={`${playfair.className} text-lg sm:text-3xl italic md:text-center md:w-full`}
+          >
+            THE FRAMING DRAGON
           </h1>
 
           {/* Right-aligned hamburger menu (mobile only) */}
@@ -35,20 +56,14 @@ export default function Navbar() {
 
         {/* Desktop Navbar (Centered) */}
         <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
-          {[
-            { name: "Home", href: "/", img: "/imgs/nav-link-home.jpg" },
-            { name: "About", href: "/route-about", img: "/imgs/nav-link-about.jpg" },
-            { name: "Services", href: "/route-services", img: "/imgs/nav-link-services.jpg" },
-            { name: "Contact", href: "/route-contact", img: "/imgs/nav-link-contact.jpg" },
-            { name: "Random", href: "/route-random", img: "/imgs/nav-link-random.jpg" },
-          ].map((link) => (
+          {navlinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`font-light relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group`}
+              className="font-light relative px-4 py-2 border-2 border-transparent hover:border-[#a67c52] transition-all duration-300 group"
             >
               <span className="relative z-10 cursor-pointer">{link.name}</span>
-              
+
               {/* Background Image on Hover (Desktop Only) */}
               <span
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:block hidden"
@@ -56,7 +71,7 @@ export default function Navbar() {
                   backgroundImage: `url(${link.img})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "brightness(1.2)", // Adjusts visibility for contrast
+                  filter: "brightness(1.2)",
                 }}
               />
             </Link>
@@ -103,5 +118,3 @@ export default function Navbar() {
     </>
   );
 }
-
-

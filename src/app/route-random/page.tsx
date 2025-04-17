@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// images being mapped:
+// images being mapped
 const Images = [
   "/imgs/random-jim-1.jpg",
   "/imgs/random-jim-2.jpg",

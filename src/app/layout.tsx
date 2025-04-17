@@ -8,7 +8,7 @@ import "./globals.css";
 // PLUGINS & OTHER
 import type { Metadata } from "next";
 
-// metadata:
+// metadata
 export const metadata: Metadata = {
   title: "The Framing Dragon | Custom Framing in Mill Valley",
   description: "A Bay Area trusted custom framing shop. Get high-quality frames for photos, artwork, posters, and collectibles at The Framing Dragon.",
