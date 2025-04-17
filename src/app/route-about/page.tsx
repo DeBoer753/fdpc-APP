@@ -40,10 +40,6 @@ export default function About() {
         </p>
 
         <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
-          We believe that framing is both an art and a craft. Each piece we frame is handled with care, attention to detail, and a commitment to longevity. From classic frames to modern designs, our curated selection of materials ensures we can match a wide variety of styles and preferences.
-        </p>
-
-        <p className="text-stone-500 px-4 sm:px-6 sm:text-center md:text-left lg:text-left mx-auto">
          Whether you`re a local artist, a collector, or someone looking to frame a sentimental item, our team is here to guide you through the process and help bring your vision to life. At Framing Dragon, we’re passionate about creating frames that not only protect but also enhance what matters most.
         </p>
 

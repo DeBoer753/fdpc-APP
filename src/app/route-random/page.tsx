@@ -21,7 +21,7 @@ export default function Random() {
       > 
 
         <div className="mt-4 rounded-lg max-w-[400px] text-center w-full flex justify-center flex-col">
-          <h1 className="text-3xl font-thin text-stone-500 italic px-6 mb-5">
+          <h1 className="text-2xl sm:text-3xl font-thin text-stone-500 italic px-6 mb-5">
             Random
           </h1>
           <p className="text-stone-500 text-xl">

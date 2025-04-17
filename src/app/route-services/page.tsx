@@ -61,7 +61,7 @@ export default function Services() {
 
           {/* Title */}
           <div className="flex justify-center mt-4">
-            <h1 className="text-3xl font-thin text-stone-500 italic px-6 py-2">Services</h1>
+            <h1 className="text-2xl sm:text-3xl font-thin text-stone-500 italic px-6 py-2">Services</h1>
           </div>
 
           {/* Services List */}
