@@ -43,20 +43,23 @@ export default function Picture() {
     <div
       id="frame-image"
       className="mt-20 mb-20 flex justify-center transition-transform duration-500 ease-out"
-      style={{ transform: `scale(${scaleFactor})` }} // Dynamic scaling (Desktop Only)
+      style={{ transform: `scale(${scaleFactor})` }}
+      role="img"
+      aria-label="Image of our frame store with decorative shadow background"
     >
       {/* Shadow Behind the Image */}
       <div
         className="absolute w-[360px] h-[400px] bg-black blur-lg rounded-lg translate-y-10 transition-opacity duration-500 ease-out"
         style={{
-          opacity: (1.1 - scaleFactor) / 0.2, // Fade out as scaleFactor increases
+          opacity: (1.1 - scaleFactor) / 0.2,
         }}
+        aria-hidden="true"
       ></div>
 
       {/* Framed Store Image */}
       <Image
         src="/imgs/home-frame-store.png"
-        alt="Frame Store"
+        alt="Exterior view of our custom framing store"
         width={350}
         height={150}
         className="object-contain relative shadow-lg rounded-lg"

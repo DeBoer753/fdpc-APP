@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar Container */}
-      <header className="bg-stone-400 text-white p-6">
+      <header className="bg-stone-400 text-white p-6" role="banner">
         <div className="container mx-auto flex justify-between items-center md:flex-col">
           {/* Left-aligned title on mobile, centered on desktop */}
           <h1
@@ -49,13 +49,17 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(true)}
             className="text-white text-3xl focus:outline-none md:hidden"
+            aria-label="Open navigation menu"
           >
-            <FiMenu />
+            <FiMenu aria-hidden="true" />
           </button>
         </div>
 
         {/* Desktop Navbar (Centered) */}
-        <nav className="hidden md:flex justify-center space-x-6 text-lg mt-4">
+        <nav
+          className="hidden md:flex justify-center space-x-6 text-lg mt-4"
+          aria-label="Main navigation"
+        >
           {navlinks.map((link) => (
             <Link
               key={link.href}
@@ -73,6 +77,7 @@ export default function Navbar() {
                   backgroundPosition: "center",
                   filter: "brightness(1.2)",
                 }}
+                aria-hidden="true"
               />
             </Link>
           ))}
@@ -81,22 +86,29 @@ export default function Navbar() {
 
       {/* Full-Width Sidebar Menu (Mobile) */}
       <div
-        className={`fixed inset-0 bg-stone-400 text-white transform ${
+        className={`h-[100dvh] w-full fixed inset-0 bg-stone-400 text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out z-50`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
       >
         {/* Close Button */}
         <div className="flex justify-end p-4">
           <button
             onClick={() => setIsOpen(false)}
             className="text-white text-3xl focus:outline-none"
+            aria-label="Close navigation menu"
           >
-            <FiX />
+            <FiX aria-hidden="true" />
           </button>
         </div>
 
         {/* Sidebar Links (No Image Backgrounds) */}
-        <nav className="flex flex-col space-y-4 p-6 text-lg ">
+        <nav
+          className="flex flex-col space-y-4 p-6 text-lg"
+          aria-label="Sidebar navigation"
+        >
           {[
             { name: "Home", href: "/" },
             { name: "About Us", href: "/route-about" },
@@ -108,7 +120,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className="block py-2 border-b border-stone-100 hover:text-[#a67c52] transition"
-              onClick={() => setIsOpen(false)} // Close sidebar on click
+              onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>

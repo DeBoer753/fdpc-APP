@@ -24,7 +24,10 @@ export default function Banner() {
   }, [bannerImages.length]);
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[490px] bg-black overflow-hidden">
+    <section
+      aria-label="Framing Dragon rotating banner images"
+      className="relative w-full h-[400px] sm:h-[490px] bg-black overflow-hidden"
+    >
       {bannerImages.map((image, i) => (
         <div
           key={i}
@@ -34,13 +37,13 @@ export default function Banner() {
         >
           <Image
             src={image}
-            alt={`Banner ${i}`}
+            alt={`Framing Dragon store banner ${i + 1}`}
             layout="fill"
             objectFit="cover"
             priority={i === 0}
           />
         </div>
       ))}
-    </div>
+    </section>
   );
 }

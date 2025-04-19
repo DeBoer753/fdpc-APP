@@ -122,9 +122,17 @@ export default function Work() {
   }, [isModalOpen]);
 
   return (
-    <div className="flex flex-col items-center p-6 lg:p-10 max-w-[1200px] mx-auto">
+    <div
+      className="flex flex-col items-center p-6 lg:p-10 max-w-[1200px] mx-auto"
+      role="region"
+      aria-labelledby="work-heading"
+    >
       {isMobile ? (
-        <div className="relative w-full max-w-[300px] mx-auto mt-5">
+        <div
+          className="relative w-full max-w-[300px] mx-auto mt-5"
+          role="region"
+          aria-label="Work image carousel"
+        >
           <Arrow direction="left" onClick={() => sliderRef?.slickPrev()} />
           <Slider {...settings} ref={setSliderRef}>
             {images.map((img, index) => (
@@ -132,15 +140,24 @@ export default function Work() {
                 key={index}
                 className="relative w-full h-[350px] border-2 border-stone-500 cursor-pointer group"
                 onClick={() => openModal(`/imgs/${img}`)}
+                role="button"
+                tabIndex={0}
+                aria-label={`View enlarged work image ${index + 1}`}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && openModal(`/imgs/${img}`)
+                }
               >
                 <Image
                   src={`/imgs/${img}`}
-                  alt={`Work Image ${index + 1}`}
+                  alt={`Work image ${index + 1}`}
                   fill
                   className="object-cover transition-opacity duration-300 group-hover:opacity-60"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
+                  <FaHandPointer
+                    className="text-stone-900 text-3xl drop-shadow-lg"
+                    aria-hidden="true"
+                  />
                 </div>
               </div>
             ))}
@@ -158,16 +175,23 @@ export default function Work() {
               viewport={{ once: true }}
               className="relative cursor-pointer border-2 border-stone-500 group"
               onClick={() => openModal(`/imgs/${img}`)}
+              role="button"
+              tabIndex={0}
+              aria-label={`View enlarged work image ${index + 1}`}
+              onKeyDown={(e) => e.key === "Enter" && openModal(`/imgs/${img}`)}
             >
               <Image
                 src={`/imgs/${img}`}
-                alt={`Work Image ${index + 1}`}
+                alt={`Work image ${index + 1}`}
                 width={400}
                 height={400}
                 className="object-contain w-full max-w-[500px] transition-opacity duration-300 group-hover:opacity-60"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
+                <FaHandPointer
+                  className="text-stone-900 text-3xl drop-shadow-lg"
+                  aria-hidden="true"
+                />
               </div>
             </motion.div>
           ))}
@@ -175,10 +199,16 @@ export default function Work() {
       )}
 
       {isModalOpen && selectedImage && (
-        <div className="fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-5 overflow-hidden">
+        <div
+          className="fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-5 overflow-hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Zoomed work image"
+        >
           <button
             className="absolute top-5 right-5 text-black text-3xl font-bold z-50"
             onClick={() => setIsModalOpen(false)}
+            aria-label="Close image modal"
           >
             &times;
           </button>
@@ -205,7 +235,7 @@ export default function Work() {
           >
             <Image
               src={selectedImage}
-              alt="Zoomed Work Image"
+              alt="Zoomed view of work image"
               width={1000}
               height={850}
               className="object-contain w-full h-full"
@@ -216,13 +246,17 @@ export default function Work() {
 
       <div className="flex flex-col items-center mt-20">
         <h2
+          id="work-heading"
           className={`${playfair.className} max-w-[600px] text-center mb-10 text-stone-500 text-3xl italic font-thin leading-relaxed px-5`}
         >
           ...some work of ours.
         </h2>
 
         <a href="/route-contact">
-          <button className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20">
+          <button
+            className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20"
+            aria-label="Go to contact page"
+          >
             Contact Us
           </button>
         </a>

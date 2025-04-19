@@ -47,6 +47,8 @@ export default function Reviews() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 1 } }}
       viewport={{ once: true }}
+      aria-labelledby="review-section-heading"
+      role="region"
     >
       {/* Logo Image */}
       <Image
@@ -59,14 +61,20 @@ export default function Reviews() {
       />
 
       {/* Navigation Dots */}
-      <div className="flex gap-3 mt-3">
+      <div
+        className="flex gap-3 mt-3"
+        role="navigation"
+        aria-label="Review navigation"
+      >
         {reviews.map((_, i) => (
           <button
             key={i}
-            onClick={() => setIndex(i)} // Change review on click
+            onClick={() => setIndex(i)}
             className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 cursor-pointer ${
               i === index ? "bg-stone-600" : "bg-stone-400"
             }`}
+            aria-label={`Go to review ${i + 1}`}
+            aria-current={i === index ? "true" : undefined}
           ></button>
         ))}
       </div>
@@ -74,22 +82,29 @@ export default function Reviews() {
       {/* Reviews Section */}
       <div className="min-h-[220px] max-w-[1200px] text-center mt-4 mx-2">
         <motion.div
-          key={index} // Forces Framer Motion to animate on index change
-          initial={{ opacity: 0 }} // Start fade-in effect
-          animate={{ opacity: 1 }} // Fade in smoothly
-          exit={{ opacity: 0 }} // Fade out effect
-          transition={{ duration: 0.6 }} // Smooth 0.6s transition
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
           className={`${playfair.className} text-lg sm:text-xl md:text-2xl lg:text-4xl text-stone-500`}
+          id="review-section-heading"
         >
           {reviews[index]}
+
           {/* White Stars */}
-          <div className="flex justify-center gap-2 mt-5">
+          <div
+            className="flex justify-center gap-2 mt-5"
+            role="img"
+            aria-label="5 star rating"
+          >
             {Array(5)
               .fill(null)
               .map((_, i) => (
                 <FaStar
                   key={i}
                   className="text-white text-lg sm:text-xl md:text-2xl"
+                  aria-hidden="true"
                 />
               ))}
           </div>

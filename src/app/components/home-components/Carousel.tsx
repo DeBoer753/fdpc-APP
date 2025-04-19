@@ -121,18 +121,27 @@ export default function Carousel() {
     setTranslate({ x: 0, y: 0 });
   };
 
-
   return (
-    <div className="flex flex-col items-center">
+    <section
+      aria-label="Gallery of Framed Art"
+      className="flex flex-col items-center"
+    >
       {/* Section Title */}
-      <h2 className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5 italic">
+      <h2
+        id="gallery-heading"
+        className="max-w-[600px] text-center mb-15 text-stone-500 text-2xl font-thin leading-relaxed px-5 italic"
+      >
         A well chosen frame does more than protecting. It enhances, preserves,
         and honors the art. Our services offer timeless craftsmanship, drawing
         inspiration from history, theater, and minimalist design.
       </h2>
 
       {/* Desktop Image Grid */}
-      <div className="max-w-[1000px] w-full mx-auto mb-20">
+      <div
+        className="max-w-[1000px] w-full mx-auto mb-20"
+        role="region"
+        aria-labelledby="gallery-heading"
+      >
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center px-2">
           {imageUrls.map((src, index) => (
             <motion.div
@@ -143,22 +152,33 @@ export default function Carousel() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               onClick={() => openModal(src)}
+              role="button"
+              tabIndex={0}
+              aria-label={`View enlarged image ${index + 1}`}
+              onKeyDown={(e) => e.key === "Enter" && openModal(src)}
             >
               <Image
                 src={src}
-                alt={`Image ${index + 1}`}
+                alt={`Framed artwork ${index + 1}`}
                 fill
                 className="object-cover transition-opacity duration-300 group-hover:opacity-60"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
+                <FaHandPointer
+                  className="text-stone-900 text-3xl drop-shadow-lg"
+                  aria-hidden="true"
+                />
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* Mobile Carousel */}
-        <div className="block md:hidden relative w-full max-w-[300px] mx-auto">
+        <div
+          className="block md:hidden relative w-full max-w-[300px] mx-auto"
+          role="region"
+          aria-label="Image carousel"
+        >
           <Arrow direction="left" onClick={() => sliderRef?.slickPrev()} />
           <Slider {...settings} ref={setSliderRef}>
             {imageUrls.map((src, index) => (
@@ -166,15 +186,22 @@ export default function Carousel() {
                 key={index}
                 className="relative w-full h-[350px] border-2 border-stone-500 cursor-pointer group"
                 onClick={() => openModal(src)}
+                role="button"
+                tabIndex={0}
+                aria-label={`View enlarged image ${index + 1}`}
+                onKeyDown={(e) => e.key === "Enter" && openModal(src)}
               >
                 <Image
                   src={src}
-                  alt={`Image ${index + 1}`}
+                  alt={`Framed artwork ${index + 1}`}
                   fill
                   className="object-cover transition-opacity duration-300 group-hover:opacity-60"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <FaHandPointer className="text-stone-900 text-3xl drop-shadow-lg" />
+                  <FaHandPointer
+                    className="text-stone-900 text-3xl drop-shadow-lg"
+                    aria-hidden="true"
+                  />
                 </div>
               </div>
             ))}
@@ -190,10 +217,14 @@ export default function Carousel() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Zoomed image modal"
         >
           <button
             className="absolute top-5 right-5 text-black text-3xl font-bold z-50"
             onClick={() => setIsModalOpen(false)}
+            aria-label="Close image modal"
           >
             &times;
           </button>
@@ -221,7 +252,7 @@ export default function Carousel() {
           >
             <Image
               src={selectedImage}
-              alt="Zoomed Image"
+              alt="Zoomed view of selected framed artwork"
               width={1000}
               height={850}
               className="object-contain w-full h-full"
@@ -239,11 +270,14 @@ export default function Carousel() {
         </h2>
 
         <a href="/route-services">
-          <button className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20">
+          <button
+            className="px-6 py-3 border-4 border-[#a67c52] bg-white text-stone-500 text-lg font-medium transition-all duration-300 hover:text-white hover:bg-stone-400 cursor-pointer mb-20"
+            aria-label="Visit our services page"
+          >
             Our Services
           </button>
         </a>
       </div>
-    </div>
+    </section>
   );
 }
