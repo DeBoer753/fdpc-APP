@@ -1,6 +1,6 @@
 "use client";
 
-// PLUGINS & OTHER
+// PLUGINS & OTHERR
 import { useState } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
