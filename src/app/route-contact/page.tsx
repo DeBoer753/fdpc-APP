@@ -15,7 +15,7 @@ const infoSections = [
   {
     icon: <FaPhoneAlt className="text-3xl mx-auto mb-2" />,
     title: "Phone",
-    lines: ["(402) 391-4628"]
+    lines: ["(415) 388-1497"]
   },
   {
     icon: <FaClock className="text-3xl mx-auto mb-2" />,
