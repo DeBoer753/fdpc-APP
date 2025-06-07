@@ -9,6 +9,9 @@ export async function POST(req: Request) {
   const { name, email, message } = await req.json();
 
   try {
+    console.log("🧪 Runtime FROM_EMAIL:", process.env.FROM_EMAIL);
+
+
     const data = await resend.emails.send({
       from: process.env.FROM_EMAIL!,
       to: process.env.TO_EMAIL!,
