@@ -1,4 +1,4 @@
-"use client"; // Needed for Next.js App Router (useState) 
+"use client"; // Needed for Next.js App Router (useState) /
 
 // COMPONENTS
 import Arrow from "../custom/Arrow";
