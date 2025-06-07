@@ -1,4 +1,4 @@
-"use client"; // Needed for Next.js App Router (useState) /
+"use client"; // Needed for Next.js App Router (useState) 
 
 // PLUGINS & OTHER
 import { useState, useEffect } from "react";
